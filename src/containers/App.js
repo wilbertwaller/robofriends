@@ -14,7 +14,11 @@ class App extends Component {
   }
 
   onSearchChange = (event) => {
-    this.setState({ searchField: event.target.value.trim() });
+    this.setState(() => { 
+      return {
+        searchField: event.target.value.trim() 
+      };
+    });
   }
 
   render() {
@@ -39,7 +43,11 @@ class App extends Component {
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(users => this.setState({ robots: users }));
+      .then(users => this.setState(() => {
+        return { 
+          robots: users 
+        };
+      }));
   }
 }
 
